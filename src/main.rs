@@ -19,6 +19,7 @@ async fn main() {
     // build our application with a route
     let app = Router::new()
         .route("/", get(root))
+        .route("/search-results", get(search_results))
         .route("/css", get(css))
         .route("/clicked", post(clicked))
         .layer(LiveReloadLayer::new());
@@ -43,6 +44,13 @@ async fn root() -> Html<String> {
     context.insert("foos", &["foo", "bar"]);
     
     let rendered = TEMPLATES.render("root/index.html", &context).unwrap();
+    
+    Html(rendered)
+}
+
+async fn search_results() -> Html<String> {
+    let context = Context::new();
+    let rendered = TEMPLATES.render("search-results/index.html", &context).unwrap();
     
     Html(rendered)
 }
