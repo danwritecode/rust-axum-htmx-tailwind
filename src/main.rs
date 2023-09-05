@@ -1,5 +1,5 @@
 use axum::{
-    routing::get,
+    routing::{get, post},
     Router,
     response::{Html, IntoResponse}, http::{HeaderMap, header}
 };
@@ -20,6 +20,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(root))
         .route("/css", get(css))
+        .route("/clicked", post(clicked))
         .layer(LiveReloadLayer::new());
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
@@ -41,7 +42,7 @@ async fn root() -> Html<String> {
     context.insert("name", &"world");
     context.insert("foos", &["foo", "bar"]);
     
-    let rendered = TEMPLATES.render("foo/index.html", &context).unwrap();
+    let rendered = TEMPLATES.render("root/index.html", &context).unwrap();
     
     Html(rendered)
 }
@@ -52,4 +53,8 @@ async fn css() -> impl IntoResponse {
     let css = std::fs::read_to_string("dist/output.css").unwrap();
     
     (headers, css)
+}
+
+async fn clicked() -> Html<String> {
+    Html("It clicked xD".to_string())
 }
