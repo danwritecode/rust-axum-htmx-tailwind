@@ -10,7 +10,7 @@ esbuild is used to bundle all dependencies. Dependencies can be added to app.js 
 
 ## For Tailwind CSS Purging/Watching: 
 ```
-npx tailwindcss -i ./src/assets/tailwind.css -o ./dist/output.css --watch
+npx tailwindcss -i ./ui/assets/tailwind.css -o ./dist/output.css --watch
 ```
 
 ## For Hot Reloading
