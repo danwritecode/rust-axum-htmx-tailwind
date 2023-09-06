@@ -46,9 +46,9 @@ async fn js() -> impl IntoResponse {
     let mut headers = HeaderMap::new();
     headers.insert(header::CONTENT_TYPE, "application/javascript".parse().unwrap());
     headers.insert(header::CACHE_CONTROL, "public, max-age=3600".parse().unwrap());
-    let css = std::fs::read_to_string("dist/output.js").unwrap();
+    let js = std::fs::read_to_string("dist/output.js").unwrap();
     
-    (headers, css)
+    (headers, js)
 }
 
 async fn root_route() -> Html<String> {
