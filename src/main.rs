@@ -67,7 +67,7 @@ async fn other_route_route() -> Html<String> {
 }
 
 async fn clicked_uix() -> Html<String> {
-    Html("It clicked xD".to_string())
+    Html("<p class=\"text-center mt-10\">Hello from htmx</p>".to_string())
 }
 
 lazy_static! {
