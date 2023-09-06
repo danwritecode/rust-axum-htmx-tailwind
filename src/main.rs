@@ -20,10 +20,10 @@ async fn main() {
     // build our application with a route
     let app = Router::new()
         .route("/", get(root_route))
-        .route("/search-results", get(search_results_route))
+        .route("/other-route", get(other_route_route))
         .route("/css", get(css))
         .route("/js", get(js))
-        .route("/clicked", post(clicked_uix))
+        .route("/route-name/uix/clicked", post(clicked_uix))
         .layer(LiveReloadLayer::new());
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
@@ -58,10 +58,10 @@ async fn root_route() -> Html<String> {
     Html(rendered)
 }
 
-async fn search_results_route() -> Html<String> {
+async fn other_route_route() -> Html<String> {
     let mut context = Context::new();
-    context.insert("foo", &"bar");
-    let rendered = render_with_global_context("search-results/index.html", &context).unwrap();
+    context.insert("foo", &"hello from the other route");
+    let rendered = render_with_global_context("other-route/index.html", &context).unwrap();
     
     Html(rendered)
 }
