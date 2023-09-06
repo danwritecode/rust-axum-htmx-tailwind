@@ -19,3 +19,8 @@ npx tailwindcss -i ./ui/assets/tailwind.css -o ./dist/output.css --watch
 ```
 cargo watch -x run
 ```
+
+## Templating with Tera
+The templating engine used is Tera. It looks similar to Jinja, supports the injection of common components (nav, footer, etc), and supports componentization through the use of macros.
+
+Docs can be found [here](https://keats.github.io/tera/).
