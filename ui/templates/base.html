@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,600&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="/css" rel="stylesheet">
+  <style>
+    html {
+      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Roboto', sans-serif;
+    } 
+  </style>
+  <script src="/js?v={{ cargo_version }}"></script>
+  {% block head %}
+  <title>{% block title %}{% endblock title %}</title>
+  {% endblock head %}
+</head>
+<body>
+  <nav class="mx-auto max-w-7xl px-4 py-4">
+    <p class="font-medium text-gray-700">Second Brain</p>
+  </nav>
+  <div id="content" class="mx-auto max-w-7xl px-4 py-10">
+    {% block content %}{% endblock content %}
+  </div>
+</body>
+</html>
